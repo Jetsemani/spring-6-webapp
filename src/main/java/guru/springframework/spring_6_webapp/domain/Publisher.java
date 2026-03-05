@@ -2,7 +2,6 @@ package guru.springframework.spring_6_webapp.domain;
 
 import jakarta.persistence.*;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -11,16 +10,15 @@ public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String publisherName;
     private String address;
     private String city;
     private String state;
-    private int zip;
+    private String zipCode;
 
     @OneToMany(mappedBy = "publisher")
     private Set<Book> books;
-
-
 
     public Long getId() {
         return id;
@@ -62,12 +60,12 @@ public class Publisher {
         this.state = state;
     }
 
-    public int getZip() {
-        return zip;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setZip(int zip) {
-        this.zip = zip;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     @Override
@@ -78,21 +76,22 @@ public class Publisher {
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
-                ", zip=" + zip +
-                ", books=" + books +
+                ", zipCode='" + zipCode + '\'' +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) return true;
+        if (!(o instanceof Publisher)) return false;
 
         Publisher publisher = (Publisher) o;
-        return getId().equals(publisher.getId());
+
+        return id != null ? id.equals(publisher.id) : publisher.id == null;
     }
 
     @Override
     public int hashCode() {
-        return getId().hashCode();
+        return id != null ? id.hashCode() : 0;
     }
 }

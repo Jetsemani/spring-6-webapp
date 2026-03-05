@@ -3,7 +3,6 @@ package guru.springframework.spring_6_webapp.domain;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -62,14 +61,16 @@ public class Author {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) return true;
+        if (!(o instanceof Author)) return false;
 
         Author author = (Author) o;
-        return Objects.equals(getId(), author.getId());
+
+        return getId() != null ? getId().equals(author.getId()) : author.getId() == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return getId() != null ? getId().hashCode() : 0;
     }
 }
