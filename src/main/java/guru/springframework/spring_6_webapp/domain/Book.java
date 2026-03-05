@@ -29,6 +29,17 @@ public class Book {
         this.authors = authors;
     }
 
+    @ManyToOne
+    private Publisher publisher;
+
+    public Publisher getPublishers() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
     public Long getId() {
         return id;
     }
@@ -60,6 +71,7 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", authors=" + authors +
+                ", publishers=" + publisher +
                 '}';
     }
 
@@ -68,11 +80,11 @@ public class Book {
         if (o == null || getClass() != o.getClass()) return false;
 
         Book book = (Book) o;
-        return Objects.equals(getId(), book.getId());
+        return getId().equals(book.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return getId().hashCode();
     }
 }
