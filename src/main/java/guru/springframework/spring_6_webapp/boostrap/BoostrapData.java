@@ -3,9 +3,9 @@ package guru.springframework.spring_6_webapp.boostrap;
 import guru.springframework.spring_6_webapp.domain.Author;
 import guru.springframework.spring_6_webapp.domain.Book;
 import guru.springframework.spring_6_webapp.domain.Publisher;
-import guru.springframework.spring_6_webapp.domain.repositories.AuthorRepository;
-import guru.springframework.spring_6_webapp.domain.repositories.BookRepository;
-import guru.springframework.spring_6_webapp.domain.repositories.PublisherRepository;
+import guru.springframework.spring_6_webapp.repositories.AuthorRepository;
+import guru.springframework.spring_6_webapp.repositories.BookRepository;
+import guru.springframework.spring_6_webapp.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
