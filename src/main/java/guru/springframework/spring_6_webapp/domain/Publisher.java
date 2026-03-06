@@ -10,7 +10,6 @@ public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String publisherName;
     private String address;
     private String city;
@@ -68,6 +67,14 @@ public class Publisher {
         this.zipCode = zipCode;
     }
 
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
     @Override
     public String toString() {
         return "Publisher{" +
@@ -77,6 +84,7 @@ public class Publisher {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zipCode='" + zipCode + '\'' +
+                ", books=" + books +
                 '}';
     }
 
