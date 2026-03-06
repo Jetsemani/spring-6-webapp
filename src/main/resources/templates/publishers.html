@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Spring Framework Guru</title>
+</head>
+<body>
+<h1>Publishers Data</h1>
+
+<table>
+    <tr>
+        <th colspan="3">
+            <h3>Lista Editoriales</h3>
+        </th>
+    </tr>
+    <tr>
+        <th>ID</th>
+        <th>PublisherName</th>
+        <th>Books</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>ZipCode</th>
+    </tr>
+    <tr th:each="publisher : ${publishers}">
+        <td th:text="${publisher.id}"></td>
+        <td th:text="${publisher.publisherName}"></td>
+        <td>
+          <span th:each="book : ${publisher.books}">
+            <span th:text="${book.title}"></span>
+          </span>
+        </td>
+        <td th:text="${publisher.address}"></td>
+        <td th:text="${publisher.city} ?: 'noData'">noData</td>
+        <td th:text="${publisher.state} ?: 'noData'">noData</td>
+        <td th:text="${publisher.zipCode} ?: 'noData'">noData</td>
+    </tr>
+    <tr>
+        <th colspan="3" style="height: 20px"></th>
+    </tr>
+
+
+</table>
+</body>
+</html>

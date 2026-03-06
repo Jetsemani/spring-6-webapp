@@ -7,19 +7,36 @@
     <title>Spring Framework Guru</title>
 </head>
 <body>
-<h1>Book List</h1>
+<h1>Book Data</h1>
 
 <table>
     <tr>
+        <th colspan="3"><h3>Lista Libros</h3></th>
+    </tr>
+    <tr>
         <th>ID</th>
         <th>Title</th>
+        <th>Author</th>
         <th>Publisher</th>
+        <th>ISBN</th>
     </tr>
     <tr th:each="book : ${books}">
-        <td th:text="${book.id}">123</td>
-        <td th:text="${book.title}">Spring in Action</td>
-        <td th:text="${book.publisher.publisherName}">Wrox</td>
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
+        <td>
+          <span th:each="author : ${book.authors}">
+            <span th:text="${author.firstName} + ' ' + ${author.lastName}"></span>
+          </span>
+        </td>
+        <td th:text="${book.publisher.publisherName}"></td>
+        <td th:text="${book.isbn}"></td>
     </tr>
+    <tr>
+        <th colspan="3" style="height: 20px"></th>
+    </tr>
+
+
+
 </table>
 </body>
 </html>
